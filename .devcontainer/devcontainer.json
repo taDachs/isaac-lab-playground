@@ -1,0 +1,69 @@
+{
+  "name": "ros",
+  "privileged": true,
+  "remoteUser": "root",
+  "build": {
+    "dockerfile": "../docker/Dockerfile",
+    "args": {
+      "ISAACLAB_BASE_IMAGE_ARG": "isaac-lab-base",
+      "DOCKER_ISAACLAB_EXTENSION_TEMPLATE_PATH_ARG": "/workspace/isaac-lab-playground",
+    }
+    "context": ".."
+  },
+  "features": {
+    // "ghcr.io/devcontainers/features/common-utils:1": {
+    //   "version": "latest",
+    //   "configureZshAsDefaultShell": true,
+    //   "username": "tamer",
+    //   "userUid": "1000",
+    //   "userGid": "1000"
+    // },
+    "ghcr.io/tadachs/devcontainer-features/neovim:latest": {},
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages":  "stow,tmux"
+    },
+    // "ghcr.io/devcontainers/features/node:1": {}  // for stuff like copilot, lsp
+  },
+  "workspaceFolder": "/workspace/isaac-lab-playground",
+  "workspaceMount": "source=${localWorkspaceFolder}/,target=/workspace/isaac-lab-playground,type=bind,consistency=cached",
+  "runArgs": [
+    "--net=host",
+    "-e",
+    "DISPLAY=${env:DISPLAY}",
+    "-e",
+    "TERM=${env:TERM}",
+    "-v",
+    "${env:SSH_AUTH_SOCK}:/tmp/ssh-agent.socket",
+    "-e",
+    "TERM=${env:TERM}",
+    "-e",
+    "SSH_AUTH_SOCK=/tmp/ssh-agent.socket",
+    "-e",
+    "OMNI_KIT_ALLOW_ROOT=1",
+    "--runtime=nvidia",
+    "--gpus=all"
+  ],
+  "mounts": [
+    {
+      "source": "/tmp/.X11-unix",
+      "target": "/tmp/.X11-unix",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "/dev/dri",
+      "target": "/dev/dri",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
+      "source": "/dev/shm",
+      "target": "/dev/shm",
+      "type": "bind",
+      "consistency": "cached"
+    }
+  ],
+  "postCreateCommand": {
+    // "node-install": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
+  }
+}

@@ -10,10 +10,11 @@ USER root
 
 # Copy the Isaac Lab Extension Template directory (files to exclude are defined in .dockerignore)
 COPY ../ ${DOCKER_ISAACLAB_EXTENSION_TEMPLATE_PATH}
+COPY ../docker/dot-local_shellrc /root/.local_shellrc
 
 # # Install whatever you need as additional dependencies.
 RUN bash -i -c "source ${HOME}/.bashrc && \
-    cd ${DOCKER_ISAACLAB_EXTENSION_TEMPLATE_PATH}/source/ext_template && \
+    cd ${DOCKER_ISAACLAB_EXTENSION_TEMPLATE_PATH}/source/isaac-lab-playground && \
     pip install -e ."
 
 # make working directory as the Isaac Lab directory

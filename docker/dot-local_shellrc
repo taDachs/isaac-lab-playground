@@ -1,0 +1,11 @@
+alias runapp=/isaac-sim/runapp.sh
+alias runheadless=/isaac-sim/runheadless.sh
+alias runoldstreaming=/isaac-sim/runoldstreaming.sh
+export ISAACLAB_PATH=/workspace/isaaclab
+alias isaaclab=/workspace/isaaclab/isaaclab.sh
+alias python=/workspace/isaaclab/_isaac_sim/python.sh
+alias python3=/workspace/isaaclab/_isaac_sim/python.sh
+alias pip='/workspace/isaaclab/_isaac_sim/python.sh -m pip'
+alias pip3='/workspace/isaaclab/_isaac_sim/python.sh -m pip'
+alias tensorboard='/workspace/isaaclab/_isaac_sim/python.sh /workspace/isaaclab/_isaac_sim/tensorboard'
+export TZ=UT
