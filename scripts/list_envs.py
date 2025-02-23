@@ -20,7 +20,7 @@ import gymnasium as gym
 from prettytable import PrettyTable
 
 # Import extensions to set up environment tasks
-import isaac-lab-playground.tasks  # noqa: F401
+import isaac_lab_playground.tasks  # noqa: F401
 
 
 def main():

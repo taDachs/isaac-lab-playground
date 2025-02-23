@@ -1,4 +1,4 @@
-"""Installation script for the 'isaac-lab-playground' python package."""
+"""Installation script for the 'isaac_lab_playground' python package."""
 
 import os
 import toml
@@ -18,8 +18,8 @@ INSTALL_REQUIRES = [
 
 # Installation operation
 setup(
-    name="isaac-lab-playground",
-    packages=["isaac-lab-playground"],
+    name="isaac_lab_playground",
+    packages=["isaac_lab_playground"],
     author=EXTENSION_TOML_DATA["package"]["author"],
     maintainer=EXTENSION_TOML_DATA["package"]["maintainer"],
     url=EXTENSION_TOML_DATA["package"]["repository"],

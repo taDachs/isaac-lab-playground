@@ -1,6 +1,6 @@
 from isaaclab.utils import configclass
 
-from isaac-lab-playground.tasks.locomotion.velocity.velocity_env_cfg import LocomotionVelocityRoughEnvCfg
+from isaac_lab_playground.tasks.locomotion.velocity.velocity_env_cfg import LocomotionVelocityRoughEnvCfg
 
 ##
 # Pre-defined configs

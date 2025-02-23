@@ -1,5 +1,5 @@
 {
-  "name": "ros",
+  "name": "issac-lab-playground",
   "privileged": true,
   "remoteUser": "root",
   "build": {
@@ -65,5 +65,7 @@
   ],
   "postCreateCommand": {
     // "node-install": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
+    // "chown": "sudo chown -R tamer:tamer /workspace/"
+    "git-config": "git config --global --add safe.directory ${containerWorkspaceFolder}"
   }
 }
