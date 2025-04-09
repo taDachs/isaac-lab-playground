@@ -13,6 +13,7 @@ gym.register(
     kwargs={
         "env_cfg_entry_point": flat_env_cfg.AnymalDFlatEnvCfg,
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:AnymalDFlatPPORunnerCfg",
+        "skrl_simba_v2_cfg_entry_point": f"{agents.__name__}:skrl_simba_v2_cfg.yaml",
     },
 )
 
@@ -23,6 +24,7 @@ gym.register(
     kwargs={
         "env_cfg_entry_point": flat_env_cfg.AnymalDFlatEnvCfg_PLAY,
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:AnymalDFlatPPORunnerCfg",
+        "skrl_simba_v2_cfg_entry_point": f"{agents.__name__}:skrl_simba_v2_cfg.yaml",
     },
 )
 
@@ -33,6 +35,7 @@ gym.register(
     kwargs={
         "env_cfg_entry_point": rough_env_cfg.AnymalDRoughEnvCfg,
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:AnymalDRoughPPORunnerCfg",
+        "skrl_simba_v2_cfg_entry_point": f"{agents.__name__}:skrl_simba_v2_cfg.yaml",
     },
 )
 
@@ -43,5 +46,6 @@ gym.register(
     kwargs={
         "env_cfg_entry_point": rough_env_cfg.AnymalDRoughEnvCfg_PLAY,
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:AnymalDRoughPPORunnerCfg",
+        "skrl_simba_v2_cfg_entry_point": f"{agents.__name__}:skrl_simba_v2_cfg.yaml",
     },
 )

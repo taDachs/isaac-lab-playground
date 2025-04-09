@@ -1,10 +1,13 @@
-x-default-isaac-lab-template-environment: &default-isaac-lab-template-environment
+x-default-isaac-lab-playground-environment: &default-isaac-lab-playground-environment
   - OMNI_KIT_ALLOW_ROOT=1
   - DISPLAY=:0
   - TERM=xterm-256color
   - SHELL=zsh
+  - LANG=en_US.UTF-8
+  - LANGUAGE=en_US:en
+  - LC_ALL=en_US.UTF-8
 
-x-default-isaac-lab-template-deploy: &default-isaac-lab-template-deploy
+x-default-isaac-lab-playground-deploy: &default-isaac-lab-playground-deploy
   resources:
     reservations:
       devices:
@@ -13,23 +16,24 @@ x-default-isaac-lab-template-deploy: &default-isaac-lab-template-deploy
           capabilities: [ gpu ]
 
 services:
-  isaac-lab-template:
+  isaac-lab-playground:
     env_file: .env.base
-    build:
-      context: ../
-      dockerfile: docker/Dockerfile
-      args:
-        - ISAACLAB_BASE_IMAGE_ARG=isaac-lab-base
-        - DOCKER_ISAACLAB_EXTENSION_TEMPLATE_PATH_ARG=/workspace/foobarbaz
-    image: isaac-lab-template
-    container_name: isaac-lab-template
+    image: nvcr.io/nvidia/isaac-sim:4.5.0
+    # build:
+    #   context: ../
+    #   dockerfile: docker/Dockerfile
+    #   args:
+    #     - ISAACLAB_BASE_IMAGE_ARG=isaac-lab-base
+    #     - DOCKER_ISAACLAB_EXTENSION_playground_PATH_ARG=/workspace/foobarbaz
+    # image: isaac-lab-playground
+    container_name: isaac-lab-playground
     volumes:
       - type: bind
         source: ../
-        target: /workspace/foobarbaz
+        target: /home/ubuntu/isaac-lab-playground
     network_mode: host
-    environment: *default-isaac-lab-template-environment
-    deploy: *default-isaac-lab-template-deploy
+    environment: *default-isaac-lab-playground-environment
+    deploy: *default-isaac-lab-playground-deploy
     # This is the entrypoint for the container
     entrypoint: bash
     stdin_open: true

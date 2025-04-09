@@ -1,28 +1,29 @@
 {
-  "name": "issac-lab-playground",
-  "remoteUser": "root",
+  "name": "isaac-lab-playground",
+  "privileged": true,
+  "remoteUser": "ubuntu",
   "dockerComposeFile": "../docker/docker-compose.yaml",
-  "service": "isaac-lab-template",
+  "service": "isaac-lab-playground",
   "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "version": "latest",
+      "configureZshAsDefaultShell": true,
+      "username": "ubuntu",
+      "userUid": "1000",
+      "userGid": "1000"
+    },
     "ghcr.io/tadachs/devcontainer-features/neovim:latest": {},
     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-      "packages":  "stow,tmux,git"
+      "packages":  "stow,tmux,ripgrep,python3-virtualenv,python3-venv,build-essential"
     },
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": true,
-      "configureZshAsDefaultShell": true,
-      "installOhMyZsh": true,
-      "installOhMyZshConfig": false,
-    }
+    // "ghcr.io/devcontainers/features/node:1": {}  // for stuff like copilot, lsp
   },
-  "environment": {
-    "FOOBAR": "BAZ",
+  "workspaceFolder": "/home/ubuntu/isaac-lab-playground",
+  "containerEnv": {
   },
-  "workspaceFolder": "/workspace/foobarbaz",
   "postCreateCommand": {
-    // "chown": "sudo chown -R tamer:tamer /workspace/"
-    "chsh": "chsh -s /bin/zsh",
-    "git-config": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+    "video-group": "sudo usermod -aG video ubuntu",
+    "set-locale": "sudo apt-get update && sudo apt-get install -y locales && sudo locale-gen en_US.UTF-8 && sudo update-locale LANG=en_US.UTF-8"
+    // "node-install": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
   }
 }
-
